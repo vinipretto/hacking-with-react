@@ -9,5 +9,5 @@ https://leanpub.com/hackingwithreact
 ```
   $ npm install 
   $ sudo npm install -g webpack webpack-dev-server
-  $ webpack
+  $ webpack-dev-server
 ```
