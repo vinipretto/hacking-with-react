@@ -7,7 +7,7 @@ https://leanpub.com/hackingwithreact
 # Start
 
 ```
-	$ npm install 
+  $ npm install 
   $ sudo npm install -g webpack webpack-dev-server
   $ webpack
 ```
