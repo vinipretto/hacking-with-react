@@ -6,7 +6,7 @@ class Detail extends React.Component {
     return (
       <div>
         <p>Hello, {chance.first()}</p>
-        <p>You're from {chance.country({full: true})}</p>
+        <p>You are from {chance.country({full: true})}</p>
       </div>
     );
   }
