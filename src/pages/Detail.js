@@ -1,13 +1,36 @@
 import React from 'react';
-import Chance from 'chance';
+import request from 'superagent';
 
 class Detail extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { commits: [] };
+  }
+
+  componentWillMount() {
+    request.get('https://api.github.com/repos/facebook/react/commits')
+      .end((error, response) => {
+        if (!error && response) {
+          console.dir(response.body);
+          this.setState({commits: response.body});
+        } else {
+          console.log(`There was an error fetching from Github ${error}`);
+        }
+      })
+  }
+
   render() {
     return (
       <div>
-        <p>Hello, {chance.first()}</p>
-        <p>You are from {chance.country({full: true})}</p>
-      </div>
+        {this.state.commits.map((commit, index) => {
+          const author = commit.author ? commit.author.login : 'Anonymous';
+          return (<p key={index}>
+            <strong>{author}</strong>:
+            <a href={commit.html_url}>{commit.commit.message}</a>.
+          </p>);
+        }) }
+      </div>   
     );
   }
 }
