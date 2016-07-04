@@ -1,5 +1,6 @@
 import React from 'react';
 import request from 'superagent';
+import { Link } from 'react-router'; 
 
 class Detail extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class Detail extends React.Component {
     return this.state.commits.map((commit, index) => {
       const author = commit.author ? commit.author.login : 'Anonymous';
       return (<p key={index}>
-                <strong>{author}</strong>:
+                <Link to={`/users/${author}`}>{ author }</Link>:
                 <a href={commit.html_url}>{commit.commit.message}</a>.
              </p>);
     });
@@ -49,7 +50,7 @@ class Detail extends React.Component {
     return this.state.forks.map((fork, index) => {
       const owner = fork.owner ? fork.owner.login : 'Anonymous';
       return (<p key={index}>
-                <strong>{owner}</strong>: forked to
+                <Link to={`/users/${owner}`}>{ owner }</Link>: forked to
                 <a href={fork.html_url}>{fork.html_url}</a> at {fork.created_at}
             </p>)
     });
@@ -59,7 +60,7 @@ class Detail extends React.Component {
     return this.state.pulls.map((pull, index) => {
       const user = pull.user ? pull.user.login : 'Anonymous';
       return (<p key={index}>
-                <strong>{user}</strong>:
+                <Link to={`/users/${user}`}>{ user }</Link>:
                 <a href={pull.html_url}>{pull.body}</a>.
              </p>);
     });
