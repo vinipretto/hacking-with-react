@@ -1,6 +1,6 @@
 import React from 'react';
 import request from 'superagent';
-import { Link } from 'react-router'; 
+import { IndexLink, Link } from 'react-router'; 
 
 class Detail extends React.Component {
   constructor(props) {
@@ -79,6 +79,11 @@ class Detail extends React.Component {
 
     return (
       <div>
+        <p>
+          Your are here: <IndexLink to='/' activeClassName='active'>Home </IndexLink>
+          { this.props.params.repo } 
+        </p>
+
         <button onClick={this.selectMode.bind(this)} data-mode='commits'>
           Show Commits
         </button>
