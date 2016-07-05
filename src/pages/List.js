@@ -7,7 +7,6 @@ class List extends React.Component {
       <div>
         <p>
           Your are here: <IndexLink to='/' activeClassName='active'>Home </IndexLink>
-          { this.props.params.repo } 
         </p>
         <p>Please choose a repository from the list below.</p>
         <ul>
